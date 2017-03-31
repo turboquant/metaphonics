@@ -1,10 +1,10 @@
-# Accent Inspector
+# MetaPhonics 
 
-Accent Inspector is your solution to automated accent detection. Accent Inspector can determine whether an individual is a native English speaker based on their speech. All you need is a recording of the person in question reading the following phrase:
+MetaPhonics is a self-learning ML utility to identify voice demographics & detect signals such as the speaker's accents or regionality. MetaPhonics can determine whether an individual is a native English speaker based on their speech input. All you need is a recording of the person in question reading the following phrase:
 
 "Please call Stella, ask her to bring these things with her from the store."
 
-Accent Inspector classifies the person as either a native or a non-native English speaker using formant analysis and a Support Vector Machine. Applications for this include identifying customer types and providing targeted customer service and marketing.
+MetaPhonics classifies the person as either a native or a non-native English speaker using formant analysis and a Support Vector Machine. Applications for this include identifying customer types and providing targeted customer service and marketing.
 
 ## Understanding the Model
 
@@ -12,7 +12,7 @@ The objective of this project was to answer the following question:
 
 Can an algorithm detect the accent of a speaker?
 
-The human ear easily notices when an unfamiliar accent is present. Accent Detector attempts to use the same differences in sound that the human ear focuses on and deliver an accurate label for whether a given speaker has an accent.
+The human ear easily notices when an unfamiliar accent is present. MetaPhonics attempts to use the same differences in sound that the human ear focuses on and deliver an accurate label for whether a given speaker has an accent.
 
 ### The Data
 
@@ -25,11 +25,11 @@ Waveform and spectrogram from Praat with labeled formants (in red) and pulses (i
 
 ### The Model
 
-Accent detector uses a Support Vector Machine to make predictions based on formant data. The analysis uses first 4 formants of the first 12 words from each audio file. These allow the model to classify the speaker as either a native English speaker, or a non-native English, non-Indo-European speaker. Several tests sets have been run through the model and the accuracy is consitantly above 85%, while the F1 score for the native English speaking class is almost 90%.
+MetaPhonics uses a Support Vector Machine to make predictions based on formant data. The analysis uses first 4 formants of the first 12 words from each audio file. These allow the model to classify the speaker as either a native English speaker, or a non-native English, non-Indo-European speaker. Several tests sets have been run through the model and the accuracy is consitantly above 85%, while the F1 score for the native English speaking class is almost 90%.
 
 ### Insights
 
-The results are reasonably auspicious, considering the subtleties in the formant differences across accents and the amount of data used. Accent Analyzer could be used in real-time if integrated with Praat or another software that can extract the formant data from audio feed. The model did not perform well on more difficult problems, but these are likely solvable with further data and research.
+The results are reasonably auspicious, considering the subtleties in the formant differences across accents and the amount of data used. MetaPhonics could be used in real-time if integrated with Praat or another software that can extract the formant data from audio feed. The model did not perform well on more difficult problems, but these are likely solvable with further data and research.
 
 A much larger dataset would allow the model both to classify between more specific accent groups and to classify between groups that are similar to each other. The model was attempted with four language families and was only able to select with an F1 score of about 57%. Most of the observations were in the European family, the maximum observations in any one of the other groups was below 200. This just was not enough to accurately make decisions with the SVM. More data would give the model the chance to pick up on the subtle differences between each of these accent families.
 
@@ -78,11 +78,12 @@ This will build and test the model. The model outputs accuracy and F1 scores.
 
 **Step 1:** Run scrape_data.py
 
-This will scrape the mp3 files for analysis. We will save native language, birth country, and gender as well for use in further analysis. The data source is [The Speech Accent Archive](http://accent.gmu.edu/), a free accent database.
+This will scrape the mp3 files for analysis. We will save native language, birth country, and gender as well for use in further analysis. The data source is [The Speech 
+Archive](http://accent.gmu.edu/), a free accent database.
 
 **Step 2:** Download Praat
 
-Praat is a free linguistic software and is necessary for Accent Inspector to extract the data required to make predictions. We will be using the formant and pulse data that Praat derives from our audio files. Go to the [Praat homepage](http://www.fon.hum.uva.nl/praat/) to download.
+Praat is a free linguistic software and is necessary for MetaPhonics to extract the data required to make predictions. We will be using the formant and pulse data that Praat derives from our audio files. Go to the [Praat homepage](http://www.fon.hum.uva.nl/praat/) to download.
 
 **Step 3:** Run get_formants_pulses.praat
 
